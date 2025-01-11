@@ -17,7 +17,7 @@ module Kimi
       content = file_content(re['id'])
       messages = [
         { role: 'system', content: content['content'] },
-        { role: 'user', content: '提取整理图片文本，以 JSON 格式返回' }
+        { role: 'user', content: '提取整理图片文本，直接返回 JSON 结果，不需要其他内容' }
       ]
       chat(messages: messages)
     end
