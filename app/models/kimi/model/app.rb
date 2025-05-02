@@ -30,9 +30,7 @@ module Kimi
       messages = [
         { role: 'user', content: content }
       ]
-      api.chat_stream(messages: messages, **options) do |chunk|
-        puts chunk
-      end
+      api.chat_stream(messages: messages, **options)
     end
 
   end

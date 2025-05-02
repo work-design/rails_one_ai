@@ -18,5 +18,9 @@ module Kimi
       @app = App.first
     end
 
+    def set_chat
+      @chat = Chat.find params[:id]
+    end
+
   end
 end

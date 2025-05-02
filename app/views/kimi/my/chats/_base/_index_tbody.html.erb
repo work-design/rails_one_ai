@@ -1,0 +1,5 @@
+<th>
+  <%= link_to({ action: 'show', id: model.id }) do %>
+    <span><%= model.title || model.id %></span>
+  <% end %>
+</th>

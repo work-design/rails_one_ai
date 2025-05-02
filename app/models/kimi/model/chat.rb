@@ -6,6 +6,8 @@ module Kimi
 
     included do
       attribute :title, :string
+
+      has_many :messages
     end
 
   end
