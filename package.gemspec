@@ -3,7 +3,7 @@ Gem::Specification.new do |spec|
   spec.version = '0.0.1'
   spec.authors = [ "qinmingyuan" ]
   spec.email = [ "mingyuan0715@foxmail.com" ]
-  spec.homepage = "https://github.com/work-design/rails_kimi"
+  spec.homepage = 'https://github.com/work-design/rails_kimi'
   spec.summary = "Summary of RailsKimi."
   spec.description = "Description of RailsKimi."
   spec.license = "MIT"
