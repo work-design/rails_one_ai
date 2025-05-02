@@ -2,14 +2,16 @@
 
 module Kimi
   class AppApi < BaseApi
-    BASE = 'https://api.moonshot.cn/'
+    BASE = 'https://api.moonshot.cn/v1/'
+    START_CHAR = 'data: '
+    FINISH_CHAR = "\n\n"
 
     def file_create(file, content_type:, **options)
-      post_file 'v1/files', file, file_key: 'file', purpose: 'file-extract', origin: BASE, content_type: content_type, **options
+      post_file 'files', file, file_key: 'file', purpose: 'file-extract', origin: BASE, content_type: content_type, **options
     end
 
     def file_content(file_id)
-      get "v1/files/#{file_id}/content", origin: BASE
+      get "files/#{file_id}/content", origin: BASE
     end
 
     def file_parse(file, content_type:, **options)
@@ -24,12 +26,33 @@ module Kimi
 
     def chat(messages: [], model: 'moonshot-v1-8k', **options)
       post(
-        'v1/chat/completions',
+        'chat/completions',
         origin: BASE,
         model: model,
         messages: messages,
         **options
       )
+    end
+
+    def chat_stream(messages: [], model: 'moonshot-v1-8k', **options)
+      result = post_stream('chat/completions', origin: BASE, model: model, messages: messages, stream: true, **options)
+
+      line = ''.b
+      result.each do |chunk|
+        line << chunk
+        start_at = line.index(START_CHAR)
+        finish_at = line.index(FINISH_CHAR)
+
+        while start_at
+          each_chunk = line.byteslice((start_at + START_CHAR.length)..(finish_at - 1))
+          break if each_chunk == '[DONE]'
+          yield JSON.parse(each_chunk) unless each_chunk.blank?
+
+          line = line.byteslice((finish_at + 1) .. -1)
+          start_at = line.index(START_CHAR)
+          finish_at = line.index(FINISH_CHAR)
+        end
+      end
     end
 
   end
