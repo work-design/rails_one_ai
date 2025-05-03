@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Kimi
   module Model::App
     extend ActiveSupport::Concern
@@ -30,10 +28,13 @@ module Kimi
       messages = [
         { role: 'user', content: content }
       ]
+      res = ''
       api.chat_stream(messages: messages, **options) do |chunk|
         message = chunk.dig('choices', 0, 'delta', 'content') || ''
-        sse.write({ text: message }, event: 'text')
+        res << message
+        sse.write({ text: message })
       end
+      res
     end
 
   end

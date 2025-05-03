@@ -15,7 +15,8 @@ module Kimi
     end
 
     def chat_stream(sse)
-      app.chat_stream(content, sse: sse)
+      r = app.chat_stream(content, sse: sse)
+      chat.messages.create(content: r)
     end
 
   end
