@@ -11,7 +11,7 @@ module Kimi
     end
 
     def create
-      @message = @chat.messages.build(content: params[:content])
+      @message = @chat.message_sends.build(content: params[:content])
       @message.save
 
       response.headers['Content-Type'] = 'text/event-stream'

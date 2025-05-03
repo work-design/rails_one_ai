@@ -5,6 +5,7 @@ module Kimi
     extend ActiveSupport::Concern
 
     included do
+      attribute :type, :string
       attribute :content, :string
 
       belongs_to :chat
@@ -16,7 +17,7 @@ module Kimi
 
     def chat_stream(sse)
       r = app.chat_stream(content, sse: sse)
-      chat.messages.create(content: r)
+      chat.message_receives.create(content: r)
     end
 
   end

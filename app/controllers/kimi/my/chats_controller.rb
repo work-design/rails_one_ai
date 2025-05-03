@@ -11,6 +11,7 @@ module Kimi
     end
 
     def show
+      @messages = @chat.messages.order(id: :desc).page(params[:page])
     end
 
     private

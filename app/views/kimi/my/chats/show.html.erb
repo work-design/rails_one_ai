@@ -1,3 +1,4 @@
 <div id="chat_box" class="box">
+  <%= render partial: 'message', collection: @messages.reverse, as: :model %>
 </div>
 <%= render 'message_form' %>
