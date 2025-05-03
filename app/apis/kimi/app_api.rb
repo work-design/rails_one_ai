@@ -41,7 +41,7 @@ module Kimi
       result.each do |chunk|
         line << chunk
         start_at = line.index(START_CHAR)
-        finish_at = line.index(FINISH_CHAR)
+        finish_at = line.index(FINISH_CHAR) || 0
 
         while start_at
           each_chunk = line.byteslice((start_at + START_CHAR.length)..(finish_at - 1))
