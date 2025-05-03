@@ -26,11 +26,14 @@ module Kimi
     end
 
 
-    def chat_stream(content = '测试', **options)
+    def chat_stream(content = '测试', sse:, **options)
       messages = [
         { role: 'user', content: content }
       ]
-      api.chat_stream(messages: messages, **options)
+      api.chat_stream(messages: messages, **options) do |chunk|
+        message = chunk.dig('choices', 0, 'delta', 'content') || ''
+        sse.write({ text: message }, event: 'text')
+      end
     end
 
   end

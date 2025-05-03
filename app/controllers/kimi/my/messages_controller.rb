@@ -2,7 +2,6 @@ module Kimi
   class My::MessagesController < My::BaseController
     include ActionController::Live
     before_action :set_chat
-    before_action :set_new_message, only: [:new, :create]
 
     def index
       q_params = {}
@@ -12,11 +11,13 @@ module Kimi
     end
 
     def create
+      @message = @chat.messages.build(content: params[:content])
+      @message.save
+
       response.headers['Content-Type'] = 'text/event-stream'
       @sse = SSE.new(response.stream)
 
-      @message.save
-      @message.chat(@sse)
+      @message.chat_stream(@sse)
     ensure
       @sse.write({}, event: 'done')
       @sse.close
@@ -29,16 +30,6 @@ module Kimi
 
     def set_chat
       @chat = Chat.find params[:chat_id]
-    end
-
-    def set_new_message
-      @message = @chat.messages.build(message_params)
-    end
-
-    def message_params
-      params.fetch(:message, {}).permit(
-        :content
-      )
     end
 
   end

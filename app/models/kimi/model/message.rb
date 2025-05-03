@@ -14,11 +14,8 @@ module Kimi
       App.first
     end
 
-    def chat(sse)
-      app.chat_stream(content) do |chunk|
-        message = chunk.dig('choices', 0, 'delta', 'content') || ''
-        sse.write({ text: message }, event: 'text')
-      end
+    def chat_stream(sse)
+      app.chat_stream(content, sse: sse)
     end
 
   end
