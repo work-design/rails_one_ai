@@ -1,4 +1,6 @@
-<div id="chat_box">
-  <%= render partial: 'message', collection: @messages.reverse, as: :model %>
+<div class="has-page">
+  <div id="chat_box" class="flex-grow-1">
+    <%= render partial: 'message', collection: @messages.reverse, as: :model %>
+  </div>
+  <%= render 'message_form' %>
 </div>
-<%= render 'message_form' %>
