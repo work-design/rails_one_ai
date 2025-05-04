@@ -15,7 +15,8 @@ module Kimi
 
     def create
       @chat.save
-      @messages = @chat.messages.none
+
+      redirect_to action: 'show', id: @chat.id
     end
 
     def show
