@@ -1,5 +1,6 @@
 module Kimi
   class My::ChatsController < My::BaseController
+    layout 'sidebar'
     before_action :set_app
     before_action :set_chat, only: [:show]
 
