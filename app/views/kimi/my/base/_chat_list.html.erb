@@ -6,10 +6,10 @@
 </div>
 
 <aside class="menu p-3">
-  <ul class="menu-list">
+  <ul data-controller="menu" class="menu-list">
   <% @chats.each do |chat| %>
     <li>
-      <%= link_to({ action: 'show', id: chat.id }, class: (params[:id] == chat.id.to_s ? 'is-active' : '')) do %>
+      <%= link_to({ action: 'show', id: chat.id }, data: { turbo_frame: 'main', action: 'menu#enter' }, class: (params[:id] == chat.id.to_s ? 'is-active' : '')) do %>
         <span><%= chat.title %></span>
       <% end %>
     </li>
