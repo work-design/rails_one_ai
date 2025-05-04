@@ -20,9 +20,9 @@ module Kimi
       messages = [
         { role: 'user', content: content }
       ]
-      api.chat(messages: messages)
+      r = api.chat(messages: messages)
+      r.dig('choices', 0, 'message', 'content')
     end
-
 
     def chat_stream(content = '测试', sse:, **options)
       messages = [
