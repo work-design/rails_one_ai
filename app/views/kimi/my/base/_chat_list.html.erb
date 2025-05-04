@@ -1,5 +1,5 @@
 <div class="p-3">
-  <%= button_to({ action: 'create' }, params: { title: '新建聊天' }, form: { data: { turbo_frame: 'main' } }, class: 'button is-fullwidth is-info') do %>
+  <%= button_to({ action: 'create' }, params: { title: '新建聊天' }, form: { data: { turbo_frame: 'main', turbo: false } }, class: 'button is-fullwidth is-info') do %>
     <i class="fa-solid fa-plus"></i>
     <span class="ml-1"><%= t('.create.title') %></span>
   <% end %>
