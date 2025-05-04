@@ -1,0 +1,18 @@
+<div class="p-3">
+  <%= button_to({ action: 'create' }, params: { title: '新建聊天' }, class: 'button is-fullwidth is-info') do %>
+    <i class="fa-solid fa-plus"></i>
+    <span class="ml-1"><%= t('.create.title') %></span>
+  <% end %>
+</div>
+
+<aside class="menu p-3">
+  <ul class="menu-list">
+  <% @chats.each do |chat| %>
+    <li>
+      <%= link_to({ action: 'show', id: chat.id }, class: (params[:id] == chat.id.to_s ? 'is-active' : '')) do %>
+        <span><%= chat.title %></span>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
+</aside>
