@@ -1,0 +1,18 @@
+<% if model.type == 'OneAi::MessageReceive' %>
+  <div class="media is-fit">
+    <div class="media-left">
+      <%= image_tag 'avatar.png', class: 'image is-32x32' %>
+    </div>
+    <div class="media-content">
+      <p><%= model.content %></p>
+    </div>
+  </div>
+<% else %>
+  <div class="has-block-right">
+    <div class="media box is-fit">
+      <div class="media-content">
+        <p><%= model.content %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
