@@ -3,6 +3,7 @@ module OneAi
     extend ActiveSupport::Concern
 
     included do
+      attribute :type, :string
       attribute :name, :string
       attribute :appid, :string, index: true
       attribute :secret, :string
