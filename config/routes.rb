@@ -12,6 +12,12 @@ Rails.application.routes.draw do
         resources :files
       end
     end
+
+    namespace :panel, defaults: { namespace: 'panel' } do
+      resources :apps do
+        resources :files
+      end
+    end
   end
 
 end
