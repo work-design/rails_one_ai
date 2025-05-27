@@ -4,3 +4,8 @@ zh:
       chats:
         create:
           title: 新建聊天
+    panel:
+      title: AI 应用
+      apps:
+        index:
+          title: 应用管理

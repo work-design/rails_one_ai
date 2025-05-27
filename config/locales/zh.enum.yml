@@ -1,0 +1,7 @@
+zh:
+  activerecord:
+    enum:
+      one_ai/app:
+        type:
+          OneAi::KimiApp: Kimi
+          OneAi::OpenaiApp: OpenAI
