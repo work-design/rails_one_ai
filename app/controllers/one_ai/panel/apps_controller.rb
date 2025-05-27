@@ -16,6 +16,7 @@ module OneAi
 
     def app_params
       params.fetch(:app, {}).permit(
+        :type,
         :name,
         :appid,
         :secret,
