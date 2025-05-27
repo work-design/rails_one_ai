@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 module OneAi
-  module Model::System
+  module Model::SystemApp
     extend ActiveSupport::Concern
 
     included do
-      attribute :name, :string
-      attribute :content, :string
+      belongs_to :system
+      belongs_to :app
     end
 
   end

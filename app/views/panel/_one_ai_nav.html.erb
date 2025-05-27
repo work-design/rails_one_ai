@@ -6,6 +6,7 @@
     </div>
   <% end %>
   <div class="pl-4">
-    <%= link_to t('one_ai.panel.apps.index.title'), { controller: 'one_ai/panel/apps' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'apps', item: 'menu-item', active: 'menu-item is-active') %>
+    <%= link_to t('one_ai.panel.apps.index.title'), { controller: 'one_ai/panel/apps' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'one_ai/panel/apps', item: 'menu-item', active: 'menu-item is-active') %>
+    <%= link_to t('one_ai.panel.systems.index.title'), { controller: 'one_ai/panel/systems' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'systems', item: 'menu-item', active: 'menu-item is-active') %>
   </div>
 </div>

@@ -9,3 +9,6 @@ zh:
       apps:
         index:
           title: 应用管理
+      systems:
+        index:
+          title: 系统角色

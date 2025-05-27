@@ -25,6 +25,7 @@ Rails.application.routes.draw do
         resources :files
       end
       resources :roles
+      resources :systems
     end
   end
 
