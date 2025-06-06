@@ -13,6 +13,7 @@ module OneAi
     end
 
     def create
+      @chat.messages.build(content: params[:content])
       @chat.save
 
       redirect_to action: 'show', id: @chat.id
