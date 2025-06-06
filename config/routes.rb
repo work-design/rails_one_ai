@@ -14,6 +14,9 @@ Rails.application.routes.draw do
       resources :apps do
         resources :files
       end
+      resources :chats do
+        resources :messages
+      end
     end
 
     namespace :panel, defaults: { namespace: 'panel' } do

@@ -1,0 +1,12 @@
+<%= form_with(theme: nil, url: { controller: 'one_ai/admin/chats', action: 'create' }, id: 'chat_form', class: 'box') do |f| %>
+  <div class="field">
+    <%= f.text_area :content, autofocus: true, placeholder: '有什么我能帮您的么？', class: 'textarea is-borderless' %>
+  </div>
+  <div class="has-block-right">
+    <%= button_tag class: 'button' do %>
+      <span class="icon">
+        <i class="fa-solid fa-xl fa-paper-plane"></i>
+      </span>
+    <% end %>
+  </div>
+<% end %>
