@@ -1,5 +1,6 @@
 module OneAi
   class Admin::ChatsController < Admin::BaseController
+    include ActionController::Live
     before_action :set_app
     before_action :set_chat, only: [:show]
     before_action :set_chats, only: [:index, :show]
@@ -20,7 +21,14 @@ module OneAi
     end
 
     def show
+      response.headers['Content-Type'] = 'text/event-stream'
+      @sse = SSE.new(response.stream)
+
+      @message_send = @message.chat_stream(@sse)
       @messages = @chat.messages.order(id: :desc).page(params[:page])
+    ensure
+      @sse.write({}, event: 'done')
+      @sse.close
     end
 
     private
