@@ -17,13 +17,14 @@ module OneAi
       @chat.messages.build(content: params[:content])
       @chat.save
 
-      redirect_to action: 'show', id: @chat.id
+      @messages = @chat.messages
     end
 
     def show
       response.headers['Content-Type'] = 'text/event-stream'
       @sse = SSE.new(response.stream)
 
+      @message = @chat.messages.first
       @message_send = @message.chat_stream(@sse)
       @messages = @chat.messages.order(id: :desc).page(params[:page])
     ensure
