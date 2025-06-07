@@ -1,5 +1,9 @@
 <% if model.type == 'OneAi::MessageReceive' %>
-
+  <%= render layout: 'layouts/ai_message_layout/request_layout', locals: { model: model } do %>
+    <%= render partial: 'message_text', locals: { model: model } %>
+  <% end %>
 <% else %>
-
+  <%= render layout: 'layouts/ai_message_layout/reply_layout', locals: { model: model } do %>
+    <%= render partial: 'message_text', locals: { model: model } %>
+  <% end %>
 <% end %>
