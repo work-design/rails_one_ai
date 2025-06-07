@@ -14,7 +14,7 @@ module OneAi
     end
 
     def create
-      @chat.messages.build(content: params[:content])
+      @message = @chat.messages.build(content: params[:content])
       @chat.save
 
       @messages = @chat.messages

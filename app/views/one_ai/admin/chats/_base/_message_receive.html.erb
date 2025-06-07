@@ -1,0 +1,11 @@
+<div
+  data-controller="sse"
+  data-sse-id-value="<%= model.id %>"
+  data-sse-url-value="<%= url_for(controller: 'messages', action: 'show', chat_id: @chat.id, id: model.id) %>"
+  class="media is-fit"
+>
+  <div class="media-left">
+    <%= image_tag 'avatar.png', class: 'image is-32x32' %>
+  </div>
+  <div id="receive_<%= model.id %>" class="media-content"></div>
+</div>
