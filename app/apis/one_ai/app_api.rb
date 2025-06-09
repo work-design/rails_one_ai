@@ -11,7 +11,7 @@ module OneAi
     end
 
     def file_content(file_id)
-      get "files/#{file_id}/content", origin: BASE
+      get "files/#{file_id}/content", origin: @app.base_url.presence || BASE
     end
 
     def file_parse(file, content_type:, **options)
@@ -27,7 +27,7 @@ module OneAi
     def chat(messages: [], model: 'moonshot-v1-8k', **options)
       post(
         'chat/completions',
-        origin: BASE,
+        origin: @app.base_url.presence || BASE,
         model: model,
         messages: messages,
         **options
@@ -35,7 +35,7 @@ module OneAi
     end
 
     def chat_stream(messages: [], model: 'moonshot-v1-8k', **options)
-      result = post_stream('chat/completions', origin: BASE, model: model, messages: messages, stream: true, **options)
+      result = post_stream('chat/completions', origin: @app.base_url.presence || BASE, model: model, messages: messages, stream: true, **options)
 
       line = ''.b
       result.each do |chunk|

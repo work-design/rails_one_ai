@@ -5,3 +5,4 @@ zh:
         type:
           OneAi::KimiApp: Kimi
           OneAi::OpenaiApp: OpenAI
+          OneAi::OpenRouterApp: OpenRouter
