@@ -11,7 +11,8 @@ module OneAi
 
       belongs_to :organ, class_name: 'Org::Organ', optional: true
 
-      has_many :models
+      has_one :app_model, -> { where(default: true) }
+      has_many :app_models
     end
 
     def api
@@ -19,15 +20,17 @@ module OneAi
       @api = AppApi.new(self)
     end
 
-    def chat(content = '测试')
+    def chat(content = '测试', **options)
+      options.with_defaults! model: app_model.name if app_model
       messages = [
         { role: 'user', content: content }
       ]
-      r = api.chat(messages: messages)
+      r = api.chat(messages: messages, **options)
       r.dig('choices', 0, 'message', 'content')
     end
 
     def chat_stream(content = '测试', sse:, **options)
+      options.with_defaults! model: app_model.name if app_model
       messages = [
         { role: 'user', content: content }
       ]

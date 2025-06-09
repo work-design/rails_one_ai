@@ -25,6 +25,7 @@ Rails.application.routes.draw do
         get :index
       end
       resources :apps do
+        resources :app_models
         resources :files
       end
       resources :roles

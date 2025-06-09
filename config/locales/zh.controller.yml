@@ -12,3 +12,6 @@ zh:
       systems:
         index:
           title: 系统角色
+      app_models:
+        index:
+          title: 支持模型

@@ -6,6 +6,7 @@ module OneAi
 
     included do
       attribute :name, :string
+      attribute :default, :boolean
 
       belongs_to :app
     end

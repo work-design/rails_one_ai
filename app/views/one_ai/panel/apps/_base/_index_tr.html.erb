@@ -13,9 +13,9 @@
       <% end %>
     </div>
     <div data-show-target="item" class="visibility-hidden">
-      <%= link_to({ controller: 'files', app_id: model.id }, class: 'button is-small is-rounded is-primary') do %>
+      <%= link_to({ controller: 'app_models', app_id: model.id }, class: 'button is-small is-rounded is-primary') do %>
         <i class="fa-solid fa-list"></i>
-        <span class="ml-1"><%= t('.files.index.title') %></span>
+        <span class="ml-1"><%= t('.app_models.index.title') %></span>
       <% end %>
     </div>
   </td>
