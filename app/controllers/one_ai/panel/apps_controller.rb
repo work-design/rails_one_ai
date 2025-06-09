@@ -6,7 +6,7 @@ module OneAi
       q_params = {}
       q_params.merge! params.permit(:id, :type, :appid)
 
-      @apps = App.default_where(q_params).order(id: :desc).page(params[:page])
+      @apps = App.default_where(q_params).order(position: :asc).page(params[:page])
     end
 
     private

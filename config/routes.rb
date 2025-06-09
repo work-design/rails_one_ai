@@ -25,6 +25,11 @@ Rails.application.routes.draw do
         get :index
       end
       resources :apps do
+        member do
+          patch :move_lower
+          patch :move_higher
+          patch :reorder
+        end
         resources :app_models
         resources :files
       end
