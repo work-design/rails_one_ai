@@ -8,11 +8,14 @@ module OneAi
       attribute :appid, :string, index: true
       attribute :secret, :string
       attribute :base_url, :string
+      attribute :position, :integer
 
       belongs_to :organ, class_name: 'Org::Organ', optional: true
 
       has_one :app_model, -> { where(default: true) }
       has_many :app_models
+
+      positioned
     end
 
     def api
