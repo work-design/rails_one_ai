@@ -34,7 +34,7 @@ module OneAi
 
     private
     def set_app
-      @app = App.first
+      @app = App.order(position: :asc).first
     end
 
     def set_chat
