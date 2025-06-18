@@ -6,6 +6,7 @@ module OneAi
 
     included do
       attribute :auto_reply, :boolean, default: true
+      attribute :last_request_began_at, :datetime
       attribute :last_replied_at, :datetime
       attribute :last_message, :string
 
